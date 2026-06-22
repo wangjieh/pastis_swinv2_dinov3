@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "/mnt/ht2-nas2/EO_test/wj1/mm_series/mmseg_olmoearth_2m/projects/DINOv3/../../tools/train.py", line 104, in <module>
+    main()
+  File "/mnt/ht2-nas2/EO_test/wj1/mm_series/mmseg_olmoearth_2m/projects/DINOv3/../../tools/train.py", line 58, in main
+    cfg = Config.fromfile(args.config)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/ht2-nas2/EO_test/wj1/mm_series/mmengine/mmengine/config/config.py", line 459, in fromfile
+    cfg_dict, cfg_text, env_variables = Config._file2dict(
+                                        ^^^^^^^^^^^^^^^^^^
+  File "/mnt/ht2-nas2/EO_test/wj1/mm_series/mmengine/mmengine/config/config.py", line 945, in _file2dict
+    raise e
+  File "/mnt/ht2-nas2/EO_test/wj1/mm_series/mmengine/mmengine/config/config.py", line 923, in _file2dict
+    eval(codeobj, global_locals_var, global_locals_var)
+  File "/mnt/ht2-nas2/EO_test/wj1/mm_series/mmseg_olmoearth_2m/projects/DINOv3/configs/pastis/pastis_dinov3-vitl16_sat493m_linear-probe_frozen_50e.py", line 5, in <module>
+    project_root = Path(__file__).resolve().parents[2]
+                        ^^^^^^^^
+NameError: name '__file__' is not defined. Did you mean: '__name__'?
