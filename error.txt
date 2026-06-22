@@ -1,17 +1,62 @@
 Traceback (most recent call last):
+  File "/home/users_test/miniconda3/envs/abc/lib/python3.12/site-packages/yapf/pytree/pytree_utils.py", line 113, in ParseCodeToTree
+    tree = parser_driver.parse_string(code, debug=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/users_test/miniconda3/envs/abc/lib/python3.12/site-packages/yapf_third_party/_ylib2to3/pgen2/driver.py", line 187, in parse_string
+    return self.parse_tokens(tokens, debug)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/users_test/miniconda3/envs/abc/lib/python3.12/site-packages/yapf_third_party/_ylib2to3/pgen2/driver.py", line 156, in parse_tokens
+    if p.addtoken(type, value, (prefix, start)):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/users_test/miniconda3/envs/abc/lib/python3.12/site-packages/yapf_third_party/_ylib2to3/pgen2/parse.py", line 230, in addtoken
+    return self._addtoken(ilabel, type, value, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/users_test/miniconda3/envs/abc/lib/python3.12/site-packages/yapf_third_party/_ylib2to3/pgen2/parse.py", line 313, in _addtoken
+    raise ParseError('bad input', type, value, context)
+yapf_third_party._ylib2to3.pgen2.parse.ParseError: bad input: type=20, value='<', context=('', (1, 5))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/users_test/miniconda3/envs/abc/lib/python3.12/site-packages/yapf/yapflib/yapf_api.py", line 198, in FormatCode
+    tree = pytree_utils.ParseCodeToTree(unformatted_source)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/users_test/miniconda3/envs/abc/lib/python3.12/site-packages/yapf/pytree/pytree_utils.py", line 116, in ParseCodeToTree
+    ast.parse(code)
+  File "/home/users_test/miniconda3/envs/abc/lib/python3.12/ast.py", line 52, in parse
+    return compile(source, filename, mode, flags,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<unknown>", line 1
+    Path=<class 'pathlib.Path'>
+         ^
+SyntaxError: invalid syntax
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/ht2-nas2/EO_test/wj1/mm_series/mmengine/mmengine/config/config.py", line 1484, in pretty_text
+    text, _ = FormatCode(text, style_config=yapf_style)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/users_test/miniconda3/envs/abc/lib/python3.12/site-packages/yapf/yapflib/yapf_api.py", line 201, in FormatCode
+    raise errors.YapfError(errors.FormatErrorMsg(e))
+yapf.yapflib.errors.YapfError: <unknown>:1:6: invalid syntax
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
   File "/mnt/ht2-nas2/EO_test/wj1/mm_series/mmseg_olmoearth_2m/projects/DINOv3/../../tools/train.py", line 104, in <module>
     main()
-  File "/mnt/ht2-nas2/EO_test/wj1/mm_series/mmseg_olmoearth_2m/projects/DINOv3/../../tools/train.py", line 58, in main
-    cfg = Config.fromfile(args.config)
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/mnt/ht2-nas2/EO_test/wj1/mm_series/mmengine/mmengine/config/config.py", line 459, in fromfile
-    cfg_dict, cfg_text, env_variables = Config._file2dict(
-                                        ^^^^^^^^^^^^^^^^^^
-  File "/mnt/ht2-nas2/EO_test/wj1/mm_series/mmengine/mmengine/config/config.py", line 945, in _file2dict
-    raise e
-  File "/mnt/ht2-nas2/EO_test/wj1/mm_series/mmengine/mmengine/config/config.py", line 923, in _file2dict
-    eval(codeobj, global_locals_var, global_locals_var)
-  File "/mnt/ht2-nas2/EO_test/wj1/mm_series/mmseg_olmoearth_2m/projects/DINOv3/configs/pastis/pastis_dinov3-vitl16_sat493m_linear-probe_frozen_50e.py", line 5, in <module>
-    project_root = Path(__file__).resolve().parents[2]
-                        ^^^^^^^^
-NameError: name '__file__' is not defined. Did you mean: '__name__'?
+  File "/mnt/ht2-nas2/EO_test/wj1/mm_series/mmseg_olmoearth_2m/projects/DINOv3/../../tools/train.py", line 93, in main
+    runner = Runner.from_cfg(cfg)
+             ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/ht2-nas2/EO_test/wj1/mm_series/mmengine/mmengine/runner/runner.py", line 462, in from_cfg
+    runner = cls(
+             ^^^^
+  File "/mnt/ht2-nas2/EO_test/wj1/mm_series/mmengine/mmengine/runner/runner.py", line 403, in __init__
+    self._log_env(env_cfg)
+  File "/mnt/ht2-nas2/EO_test/wj1/mm_series/mmengine/mmengine/runner/runner.py", line 2388, in _log_env
+    self.logger.info(f'Config:\n{self.cfg.pretty_text}')
+                                 ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/ht2-nas2/EO_test/wj1/mm_series/mmengine/mmengine/config/config.py", line 1489, in pretty_text
+    raise SyntaxError('Failed to format the config file, please '
+SyntaxError: Failed to format the config file, please check the syntax of: 
