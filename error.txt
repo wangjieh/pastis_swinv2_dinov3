@@ -2,9 +2,9 @@ custom_imports = dict(imports=['dinov3_mmrotate'], allow_failed_imports=False)
 
 default_scope = 'mmrotate'
 
-data_root = ''
-dinov3_pretrained = ''
-work_dir = './work_dirs/dior_r_dinov3-vitl16_sat493m_fpn_oriented-rcnn_finetune_10frozen_40ft_50e'
+data_root = '../../../../datasets/dior-r'
+dinov3_pretrained = fr'../../../../../weights/Dinov3_pretrained/DINOv3_ViT_SAT-493M/dinov3_vitl16_pretrain_sat493m-eadcf0ff.pth'
+work_dir = '/mnt/htzzb2/EO_test/wj1/DINOv3_work_dirs/dior_r_dinov3-vitl16_sat493m_fpn_oriented-rcnn_finetune_10frozen_40ft_50e'
 
 angle_version = 'le90'
 num_classes = 20
