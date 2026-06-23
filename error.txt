@@ -2,9 +2,9 @@ custom_imports = dict(imports=['dinov3_mmrotate'], allow_failed_imports=False)
 
 default_scope = 'mmrotate'
 
-data_root = '../../../../datasets/dior-r'
-dinov3_pretrained = fr'../../../../../weights/Dinov3_pretrained/DINOv3_ViT_SAT-493M/dinov3_vitl16_pretrain_sat493m-eadcf0ff.pth'
-work_dir = '/mnt/htzzb2/EO_test/wj1/DINOv3_work_dirs/dior_r_dinov3-vitl16_sat493m_fpn_oriented-rcnn_finetune_10frozen_40ft_50e'
+data_root = ''
+dinov3_pretrained = ''
+work_dir = './work_dirs/dior_r_dinov3-vitl16_sat493m_fpn_oriented-rcnn_frozen_50e'
 
 angle_version = 'le90'
 num_classes = 20
@@ -57,9 +57,9 @@ model = dict(
         out_indices=(-1, ),
         out_scales=(4, 2, 1, 0.5),
         norm=True,
-        frozen=False,
+        frozen=True,
         frozen_stages=-1,
-        norm_eval=False,
+        norm_eval=True,
         untie_global_and_local_cls_norm=True,
         init_cfg=dict(
             type='Pretrained',
@@ -242,7 +242,7 @@ param_scheduler = [
         gamma=0.1)
 ]
 
-custom_hooks = [dict(type='DINOv3BackboneFreezeHook', unfreeze_epoch=10)]
+custom_hooks = [dict(type='DINOv3BackboneFreezeHook', unfreeze_epoch=None)]
 
 train_cfg = dict(type='EpochBasedTrainLoop', max_epochs=max_epochs, val_interval=1)
 val_cfg = dict(type='ValLoop')
