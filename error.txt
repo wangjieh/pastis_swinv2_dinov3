@@ -1,1 +1,67 @@
 06/23 19:10:01 - mmengine - WARNING - Failed to search registry with scope "mmrotate" in the "optim_wrapper" registry tree. As a workaround, the current "optim_wrapper" registry in "mmengine" is used to build instance. This may cause unexpected failure when running the built modules. Please check whether "mmrotate" is a correct scope, or whether the registry is initialized.
+
+
+Traceback (most recent call last):
+  File "/mnt/ht2-nas2/EO_test/wj1/mm_series/mmseg_olmoearth_2m/projects/DINOv3/../../mmrotate_tools/train.py", line 125, in <module>
+    main()
+  File "/mnt/ht2-nas2/EO_test/wj1/mm_series/mmseg_olmoearth_2m/projects/DINOv3/../../mmrotate_tools/train.py", line 121, in main
+    runner.train()
+  File "/mnt/ht2-nas2/EO_test/miniconda3/envs/abc/lib/python3.12/site-packages/mmengine/runner/runner.py", line 1777, in train
+    model = self.train_loop.run()  # type: ignore
+            ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/ht2-nas2/EO_test/miniconda3/envs/abc/lib/python3.12/site-packages/mmengine/runner/loops.py", line 98, in run
+    self.run_epoch()
+  File "/mnt/ht2-nas2/EO_test/miniconda3/envs/abc/lib/python3.12/site-packages/mmengine/runner/loops.py", line 115, in run_epoch
+    self.run_iter(idx, data_batch)
+  File "/mnt/ht2-nas2/EO_test/miniconda3/envs/abc/lib/python3.12/site-packages/mmengine/runner/loops.py", line 131, in run_iter
+    outputs = self.runner.model.train_step(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/ht2-nas2/EO_test/miniconda3/envs/abc/lib/python3.12/site-packages/mmengine/model/base_model/base_model.py", line 114, in train_step
+    losses = self._run_forward(data, mode='loss')  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/ht2-nas2/EO_test/miniconda3/envs/abc/lib/python3.12/site-packages/mmengine/model/base_model/base_model.py", line 361, in _run_forward
+    results = self(**data, mode=mode)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/ht2-nas2/EO_test/miniconda3/envs/abc/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1773, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/ht2-nas2/EO_test/miniconda3/envs/abc/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1784, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/ht2-nas2/EO_test/wj1/mm_series/mmdetection/mmdet/models/detectors/base.py", line 92, in forward
+    return self.loss(inputs, data_samples)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/ht2-nas2/EO_test/wj1/mm_series/mmdetection/mmdet/models/detectors/two_stage.py", line 174, in loss
+    rpn_losses, rpn_results_list = self.rpn_head.loss_and_predict(
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/ht2-nas2/EO_test/wj1/mm_series/mmdetection/mmdet/models/dense_heads/base_dense_head.py", line 167, in loss_and_predict
+    predictions = self.predict_by_feat(
+                  ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/ht2-nas2/EO_test/wj1/mm_series/mmdetection/mmdet/models/dense_heads/base_dense_head.py", line 279, in predict_by_feat
+    results = self._predict_by_feat_single(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/ht2-nas2/EO_test/wj1/mm_series/mmdetection/mmdet/models/dense_heads/rpn_head.py", line 233, in _predict_by_feat_single
+    return self._bbox_post_process(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/ht2-nas2/EO_test/wj1/mm_series/mmrotate-1.x/mmrotate/models/dense_heads/oriented_rpn_head.py", line 67, in _bbox_post_process
+    det_bboxes, keep_idxs = batched_nms(hbboxes, results.scores,
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/ht2-nas2/EO_test/wj1/mm_series/mmcv/mmcv/ops/nms.py", line 303, in batched_nms
+    dets, keep = nms_op(boxes_for_nms, scores, **nms_cfg_)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/ht2-nas2/EO_test/miniconda3/envs/abc/lib/python3.12/site-packages/mmengine/utils/misc.py", line 395, in new_func
+    output = old_func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/ht2-nas2/EO_test/wj1/mm_series/mmcv/mmcv/ops/nms.py", line 127, in nms
+    inds = NMSop.apply(boxes, scores, iou_threshold, offset, score_threshold,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/ht2-nas2/EO_test/miniconda3/envs/abc/lib/python3.12/site-packages/torch/autograd/function.py", line 576, in apply
+    return super().apply(*args, **kwargs)  # type: ignore[misc]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/ht2-nas2/EO_test/wj1/mm_series/mmcv/mmcv/ops/nms.py", line 27, in forward
+    inds = ext_module.nms(
+           ^^^^^^^^^^^^^^^
+torch.AcceleratorError: CUDA error: no kernel image is available for execution on the device
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
