@@ -1,1 +1,1 @@
-完成pastis数据集在自研olmoearth 2m模型上的微调训练测评，miou17.89，已更新。
+1.完成pastis数据集在自研olmoearth 2m模型上的冻结骨干训练测评，miou40.89，已更新。2.协助王若宇拉起levircd数据在olmoearth 10m最终版权重上的训练。
