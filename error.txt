@@ -1,5 +1,1 @@
-'airplane', 'airport', 'baseballfield', 'basketballcourt',
-         'bridge', 'chimney', 'dam', 'Expressway-Service-area',
-         'Expressway-toll-station', 'golffield', 'groundtrackfield',
-         'harbor', 'overpass', 'ship', 'stadium', 'storagetank',
-         'tenniscourt', 'trainstation', 'vehicle', 'windmill'
+1.完成pastis数据集在自研Copernicus模型的冻结，微调训练。自研Copernicus-epoch4999-112_finetune_miou=50.99，自研Copernicus-epoch4999-224_frozen_miou=22.9，自研Copernicus-epoch4999-224_finetune_miou=50.53
