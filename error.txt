@@ -1,3 +1,5 @@
+已经执行了：export PYTHONPATH=/mnt/ht2-nas2/EO_test/wj1/mm_series/mmseg_olmoearth_2m/projects/DINOv3:$PYTHONPATH
+
 Traceback (most recent call last):
   File "/mnt/ht2-nas2/EO_test/wj1/mm_series/mmseg_olmoearth_2m/projects/DINOv3/../../mmseg_tools/train.py", line 104, in <module>
     main()
