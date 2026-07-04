@@ -1,29 +1,31 @@
-/mnt/ht2-nas2/EO_test/wj1/mm_series/mmseg_olmoearth_new/mmseg/models/losses/cross_entropy_loss.py:250: UserWarning: Default ``avg_non_ignore`` is False, if you would like to ignore the certain label and average loss over non-ignore labels, which is the same with PyTorch official cross_entropy, set ``avg_non_ignore=True``.
-  warnings.warn(
-07/04 11:25:05 - mmengine - INFO - Distributed training is not used, all SyncBatchNorm (SyncBN) layers in the model will be automatically reverted to BatchNormXd layers if they are used.
-/mnt/ht2-nas2/EO_test/wj1/mm_series/mmseg_olmoearth_new/mmseg/engine/hooks/visualization_hook.py:60: UserWarning: The draw is False, it means that the hook for visualization will not take effect. The results will NOT be visualized or stored.
-  warnings.warn('The draw is False, it means that the '
 Traceback (most recent call last):
   File "/mnt/ht2-nas2/EO_test/wj1/mm_series/mmseg_olmoearth_2m/projects/DINOv3/../../mmseg_tools/train.py", line 104, in <module>
     main()
-  File "/mnt/ht2-nas2/EO_test/wj1/mm_series/mmseg_olmoearth_2m/projects/DINOv3/../../mmseg_tools/train.py", line 93, in main
-    runner = Runner.from_cfg(cfg)
-             ^^^^^^^^^^^^^^^^^^^^
-  File "/mnt/ht2-nas2/EO_test/miniconda3/envs/abc/lib/python3.12/site-packages/mmengine/runner/runner.py", line 462, in from_cfg
-    runner = cls(
-             ^^^^
-  File "/mnt/ht2-nas2/EO_test/miniconda3/envs/abc/lib/python3.12/site-packages/mmengine/runner/runner.py", line 442, in __init__
-    self.register_hooks(default_hooks, custom_hooks)
-  File "/mnt/ht2-nas2/EO_test/miniconda3/envs/abc/lib/python3.12/site-packages/mmengine/runner/runner.py", line 1995, in register_hooks
-    self.register_custom_hooks(custom_hooks)
-  File "/mnt/ht2-nas2/EO_test/miniconda3/envs/abc/lib/python3.12/site-packages/mmengine/runner/runner.py", line 1976, in register_custom_hooks
-    self.register_hook(hook)
-  File "/mnt/ht2-nas2/EO_test/miniconda3/envs/abc/lib/python3.12/site-packages/mmengine/runner/runner.py", line 1877, in register_hook
-    hook_obj = HOOKS.build(hook)
-               ^^^^^^^^^^^^^^^^^
+  File "/mnt/ht2-nas2/EO_test/wj1/mm_series/mmseg_olmoearth_2m/projects/DINOv3/../../mmseg_tools/train.py", line 100, in main
+    runner.train()
+  File "/mnt/ht2-nas2/EO_test/miniconda3/envs/abc/lib/python3.12/site-packages/mmengine/runner/runner.py", line 1728, in train
+    self._train_loop = self.build_train_loop(
+                       ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/ht2-nas2/EO_test/miniconda3/envs/abc/lib/python3.12/site-packages/mmengine/runner/runner.py", line 1520, in build_train_loop
+    loop = LOOPS.build(
+           ^^^^^^^^^^^^
+  File "/mnt/ht2-nas2/EO_test/miniconda3/envs/abc/lib/python3.12/site-packages/mmengine/registry/registry.py", line 570, in build
+    return self.build_func(cfg, *args, **kwargs, registry=self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/ht2-nas2/EO_test/miniconda3/envs/abc/lib/python3.12/site-packages/mmengine/registry/build_functions.py", line 121, in build_from_cfg
+    obj = obj_cls(**args)  # type: ignore
+          ^^^^^^^^^^^^^^^
+  File "/mnt/ht2-nas2/EO_test/miniconda3/envs/abc/lib/python3.12/site-packages/mmengine/runner/loops.py", line 46, in __init__
+    super().__init__(runner, dataloader)
+  File "/mnt/ht2-nas2/EO_test/miniconda3/envs/abc/lib/python3.12/site-packages/mmengine/runner/base_loop.py", line 26, in __init__
+    self.dataloader = runner.build_dataloader(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/ht2-nas2/EO_test/miniconda3/envs/abc/lib/python3.12/site-packages/mmengine/runner/runner.py", line 1370, in build_dataloader
+    dataset = DATASETS.build(dataset_cfg)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/mnt/ht2-nas2/EO_test/miniconda3/envs/abc/lib/python3.12/site-packages/mmengine/registry/registry.py", line 570, in build
     return self.build_func(cfg, *args, **kwargs, registry=self)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/mnt/ht2-nas2/EO_test/miniconda3/envs/abc/lib/python3.12/site-packages/mmengine/registry/build_functions.py", line 100, in build_from_cfg
     raise KeyError(
-KeyError: 'FreezeBackboneHook is not in the mmseg::hook registry. Please check whether the value of `FreezeBackboneHook` is correct or it was registered as expected. More details can be found at https://mmengine.readthedocs.io/en/latest/advanced_tutorials/config.html#import-the-custom-module'
+KeyError: 'Ningbo2mDataset is not in the mmseg::dataset registry. Please check whether the value of `Ningbo2mDataset` is correct or it was registered as expected. More details can be found at https://mmengine.readthedocs.io/en/latest/advanced_tutorials/config.html#import-the-custom-module'
