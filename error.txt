@@ -1,2 +1,1 @@
-/mnt/htzzb2/EO_test/wj1/sspp_work_dirs/ningbo2m_hr_upernet_20e_512x512/best_mIoU_epoch_16.pth
-/mnt/htzzb2/EO_test/wj1/sspp_work_dirs/ningbo2m_hr_upernet_20e_512x512/ningbo2m_hr_upernet_20e_512x512.py
+0 background, 10 farmland, 20 city, 30 village, 40 water, 50 forest, 60 road, 70 others
