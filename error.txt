@@ -1,10 +1,1 @@
-Python 3.12.13 | packaged by conda-forge | (main, Mar  5 2026, 16:50:00) [GCC 14.3.0] on linux
-Type "help", "copyright", "credits" or "license" for more information.
->>> import dinov3_mmseg
->>> import dinov3_mmseg.datasets
->>> import dinov3_mmseg.datasets.ningbo2m_dataset
->>> from mmseg.registry import DATASETS
->>> print(DATASETS.get("Ningbo2mDataste"))
-None
->>> print(DATASETS.get("Ningbo2mDataset"))
-<class 'dinov3_mmseg.datasets.ningbo2m_dataset.Ningbo2mDataset'>
+
