@@ -8,3 +8,9 @@ for p in cfg_dir.glob('*.py'):
     p.write_text(text, encoding='utf-8')
     print('fixed:', p)
 PY
+
+
+cd /path/to/data-root
+
+find train/pre-event -maxdepth 1 -type f -name "*.tif" -printf "%f\n" | sort > train.txt
+find val/pre-event -maxdepth 1 -type f -name "*.tif" -printf "%f\n" | sort > val.txt
