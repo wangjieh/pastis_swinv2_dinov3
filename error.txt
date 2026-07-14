@@ -1,16 +1,140 @@
-python - <<'PY'
-from pathlib import Path
+"""BRIGHT optical-SAR binary change detection dataset."""
 
-cfg_dir = Path('/mnt/ht2-nas2/EO_test/wj1/mm_series/mmseg_olmoearth_2m/projects/DINOv3/configs/Ningbo2m_new')
+from __future__ import annotations
 
-for p in cfg_dir.glob('*.py'):
-    text = p.read_text(encoding='utf-8-sig')
-    p.write_text(text, encoding='utf-8')
-    print('fixed:', p)
-PY
+from .._registry import DATASETS
+
+_IMPORT_ERROR = None
+
+try:
+    import os.path as osp
+
+    from mmengine import fileio, list_from_file
+    from opencd.datasets.basecddataset import _BaseCDDataset
+except ImportError as exc:  # pragma: no cover - local machines may lack deps.
+    _IMPORT_ERROR = exc
+    _BaseCDDataset = object
 
 
-cd /path/to/data-root
+def _missing_dependency_message() -> str:
+    return (
+        "BRIGHTDataset requires Open-CD and MMEngine to be installed and "
+        f"importable. The current import error was: {_IMPORT_ERROR!r}")
 
-find train/pre-event -maxdepth 1 -type f -name "*.tif" -printf "%f\n" | sort > train.txt
-find val/pre-event -maxdepth 1 -type f -name "*.tif" -printf "%f\n" | sort > val.txt
+
+if _IMPORT_ERROR is not None:
+
+    @DATASETS.register_module()
+    class BRIGHTDataset(_BaseCDDataset):
+        """Placeholder used when Open-CD is unavailable."""
+
+        METAINFO = dict(
+            classes=("unchanged", "changed"),
+            palette=[[0, 0, 0], [255, 255, 255]],
+        )
+
+        def __init__(self, *args, **kwargs):
+            raise ImportError(_missing_dependency_message())
+
+else:
+
+    @DATASETS.register_module()
+    class BRIGHTDataset(_BaseCDDataset):
+        """BRIGHT dataset with pre-event/post-event/target folders."""
+
+        METAINFO = dict(
+            classes=("unchanged", "changed"),
+            palette=[[0, 0, 0], [255, 255, 255]],
+        )
+
+        def __init__(self,
+                     img_suffix=".tif",
+                     seg_map_suffix=".tif",
+                     format_seg_map=None,
+                     **kwargs):
+            super().__init__(
+                img_suffix=img_suffix,
+                seg_map_suffix=seg_map_suffix,
+                format_seg_map=format_seg_map,
+                **kwargs)
+
+        def load_data_list(self):
+            """Load optical, SAR, and label triplets."""
+            data_list = []
+            opt_dir = self.data_prefix.get("img_path_from", None)
+            sar_dir = self.data_prefix.get("img_path_to", None)
+            ann_dir = self.data_prefix.get("seg_map_path", None)
+            if opt_dir is None or sar_dir is None or ann_dir is None:
+                raise ValueError(
+                    "BRIGHTDataset requires data_prefix keys: "
+                    "img_path_from, img_path_to, and seg_map_path.")
+
+            if self.ann_file:
+                for opt_name in self._list_ann_file():
+                    data_list.append(
+                        self._build_data_info(
+                            opt_dir, sar_dir, ann_dir, opt_name))
+                return data_list
+
+            opt_files = self._list_files(opt_dir, self.img_suffix)
+            sar_names = set(self._list_files(sar_dir, self.img_suffix))
+            ann_names = set(self._list_files(ann_dir, self.seg_map_suffix))
+
+            for opt_name in opt_files:
+                label_name = self._label_name(opt_name)
+                if opt_name not in sar_names:
+                    raise FileNotFoundError(
+                        "Cannot find BRIGHT post-event SAR counterpart for "
+                        f"{opt_name}.")
+                if label_name not in ann_names:
+                    raise FileNotFoundError(
+                        "Cannot find BRIGHT target counterpart for "
+                        f"{label_name}.")
+                data_list.append(
+                    self._build_data_info(
+                        opt_dir, sar_dir, ann_dir, opt_name))
+
+            return sorted(data_list, key=lambda item: item["img_path"][0])
+
+        def _list_ann_file(self):
+            opt_names = []
+            for line in list_from_file(
+                    self.ann_file, backend_args=self.backend_args):
+                opt_name = line.strip()
+                if not opt_name:
+                    continue
+                if not opt_name.endswith(self.img_suffix):
+                    opt_name = f"{opt_name}{self.img_suffix}"
+                opt_names.append(opt_name)
+            return opt_names
+
+        def _build_data_info(self, opt_dir, sar_dir, ann_dir, opt_name):
+            label_name = self._label_name(opt_name)
+            return dict(
+                img_path=[
+                    osp.join(opt_dir, opt_name),
+                    osp.join(sar_dir, opt_name),
+                ],
+                seg_map_path=osp.join(ann_dir, label_name),
+                label_map=self.label_map,
+                format_seg_map=self.format_seg_map,
+                reduce_zero_label=self.reduce_zero_label,
+                seg_fields=[],
+            )
+
+        def _label_name(self, opt_name):
+            if self.img_suffix and opt_name.endswith(self.img_suffix):
+                return f"{opt_name[:-len(self.img_suffix)]}{self.seg_map_suffix}"
+            return f"{opt_name}{self.seg_map_suffix}"
+
+        def _list_files(self, directory, suffix):
+            return sorted(
+                fileio.list_dir_or_file(
+                    dir_path=directory,
+                    list_dir=False,
+                    suffix=suffix,
+                    recursive=False,
+                    backend_args=self.backend_args))
+
+
+__all__ = ["BRIGHTDataset"]
