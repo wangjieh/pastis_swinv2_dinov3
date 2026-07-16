@@ -4,7 +4,6 @@
 /mnt/htzzb2/EO_test/wj1/Ningbo_2m_new_work_dirs/dinov3_large_adapter_upernet_full_50e/best_mIoU_epoch_47.pth
 /mnt/htzzb2/EO_test/wj1/Ningbo_2m_new_work_dirs/dinov3_large_adapter_upernet_full_50e/dinov3_large_adapter_upernet_full_50e.py
 
-
 # vit
 /mnt/htzzb2/EO_test/wj1/Ningbo_2m_new_work_dirs/dinov3_large_upernet_frozen_50e/best_mIoU_epoch_38.pth
 /mnt/htzzb2/EO_test/wj1/Ningbo_2m_new_work_dirs/dinov3_large_upernet_frozen_50e/dinov3_large_upernet_frozen_50e.py
