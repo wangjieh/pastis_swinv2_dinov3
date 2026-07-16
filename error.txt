@@ -1,5 +1,23 @@
-/mnt/htzzb2/EO_test/wj1/Ningbo_2m_new_work_dirs/swin_huge_fpn_upernet_full_50e/best_mIoU_epoch_49.pth
-/mnt/htzzb2/EO_test/wj1/Ningbo_2m_new_work_dirs/swin_huge_fpn_upernet_full_50e/swin_huge_fpn_upernet_full_50e.py
+# adapter
+/mnt/htzzb2/EO_test/wj1/Ningbo_2m_new_work_dirs/dinov3_large_adapter_upernet_frozen_50e/best_mIoU_epoch_50.pth
+/mnt/htzzb2/EO_test/wj1/Ningbo_2m_new_work_dirs/dinov3_large_adapter_upernet_frozen_50e/dinov3_large_adapter_upernet_frozen_50e.py
+/mnt/htzzb2/EO_test/wj1/Ningbo_2m_new_work_dirs/dinov3_large_adapter_upernet_full_50e/best_mIoU_epoch_47.pth
+/mnt/htzzb2/EO_test/wj1/Ningbo_2m_new_work_dirs/dinov3_large_adapter_upernet_full_50e/dinov3_large_adapter_upernet_full_50e.py
 
-/mnt/htzzb2/EO_test/wj1/Ningbo_2m_new_work_dirs/swin_huge_fpn_upernet_frozen_50e/best_mIoU_epoch_39.pth
-/mnt/htzzb2/EO_test/wj1/Ningbo_2m_new_work_dirs/swin_huge_fpn_upernet_frozen_50e/swin_huge_fpn_upernet_frozen_50e.py
+
+# vit
+/mnt/htzzb2/EO_test/wj1/Ningbo_2m_new_work_dirs/dinov3_large_upernet_frozen_50e/best_mIoU_epoch_38.pth
+/mnt/htzzb2/EO_test/wj1/Ningbo_2m_new_work_dirs/dinov3_large_upernet_frozen_50e/dinov3_large_upernet_frozen_50e.py
+/mnt/htzzb2/EO_test/wj1/Ningbo_2m_new_work_dirs/dinov3_large_upernet_full_50e/best_mIoU_epoch_48.pth
+/mnt/htzzb2/EO_test/wj1/Ningbo_2m_new_work_dirs/dinov3_large_upernet_full_50e/dinov3_large_upernet_full_50e.py
+
+# 2026年7月15日
+1.完成CAU_FLOOD数据集在swin-huge权重上的微调测评，指标已经更新到语雀表格中（50 epoch, AdamW, lr=1e-4, path_size=4, backbone_lr=lr*0.1, mIoU=84.37）。
+2.完成Ningbo-2m数据在swin-huge权重上的冻结（50 epoch, AdamW, lr=1e-4, path_size=4, mIoU=67.74）、微调（50 epoch, AdamW, lr=1e-4, path_size=4, 
+backbone_lr=lr*0.1, mIoU=73.69）测评，结果已经更新到语雀、飞书表格之中。
+
+# 2026年7月16日
+1.完成BRIGHT数据集在swin-huge权重上的冻结测评，指标已经更新到语雀表格中（50 epoch, AdamW, lr=1e-4, path_size=4, backbone_lr=lr*0.1, mIoU=86.50）。
+2.在8卡节点上部署conda环境，拉起BRIGHT数据在swin-huge权重上的微调训练测评。
+3.完成Ningbo-2m-new数据在dinov3-adpater权重上的冻结（50 epoch, AdamW, lr=1e-4, path_size=4, mIoU=69.19）、微调（50 epoch, AdamW, lr=1e-4, path_size=4, 
+backbone_lr=lr*0.1, mIoU=71.45）测评。
