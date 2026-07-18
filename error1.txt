@@ -1,89 +1,21 @@
-Loads checkpoint by local backend from path: /mnt/htzzb2/EO_test/wj1/swin_self_developed_weights/swin_huge_openmm_style.pth
-Error in loading stages.0.blocks.0.attn.w_msa.relative_position_bias_table, pass
-Error in loading stages.0.blocks.1.attn.w_msa.relative_position_bias_table, pass
-Error in loading stages.1.blocks.0.attn.w_msa.relative_position_bias_table, pass
-Error in loading stages.1.blocks.1.attn.w_msa.relative_position_bias_table, pass
-Error in loading stages.2.blocks.0.attn.w_msa.relative_position_bias_table, pass
-Error in loading stages.2.blocks.1.attn.w_msa.relative_position_bias_table, pass
-Error in loading stages.2.blocks.2.attn.w_msa.relative_position_bias_table, pass
-Error in loading stages.2.blocks.3.attn.w_msa.relative_position_bias_table, pass
-Error in loading stages.2.blocks.4.attn.w_msa.relative_position_bias_table, pass
-Error in loading stages.2.blocks.5.attn.w_msa.relative_position_bias_table, pass
-Error in loading stages.2.blocks.6.attn.w_msa.relative_position_bias_table, pass
-Error in loading stages.2.blocks.7.attn.w_msa.relative_position_bias_table, pass
-Error in loading stages.2.blocks.8.attn.w_msa.relative_position_bias_table, pass
-Error in loading stages.2.blocks.9.attn.w_msa.relative_position_bias_table, pass
-Error in loading stages.2.blocks.10.attn.w_msa.relative_position_bias_table, pass
-Error in loading stages.2.blocks.11.attn.w_msa.relative_position_bias_table, pass
-Error in loading stages.2.blocks.12.attn.w_msa.relative_position_bias_table, pass
-Error in loading stages.2.blocks.13.attn.w_msa.relative_position_bias_table, pass
-Error in loading stages.2.blocks.14.attn.w_msa.relative_position_bias_table, pass
-Error in loading stages.2.blocks.15.attn.w_msa.relative_position_bias_table, pass
-Error in loading stages.2.blocks.16.attn.w_msa.relative_position_bias_table, pass
-Error in loading stages.2.blocks.17.attn.w_msa.relative_position_bias_table, pass
-Error in loading stages.3.blocks.0.attn.w_msa.relative_position_bias_table, pass
-Error in loading stages.3.blocks.1.attn.w_msa.relative_position_bias_table, pass
 Traceback (most recent call last):
-  File "/mnt/ht2-nas2/EO_test/wj1/mm_series/mmseg_olmoearth_2m/projects/DINOv3/../../mmseg_tools/train.py", line 104, in <module>
+  File "/mnt/ht2-nas2/EO_test/wj1/swin_openmmlab/./opencd_tools/test.py", line 114, in <module>
     main()
-  File "/mnt/ht2-nas2/EO_test/wj1/mm_series/mmseg_olmoearth_2m/projects/DINOv3/../../mmseg_tools/train.py", line 100, in main
-    runner.train()
-  File "/mnt/ht2-nas2/EO_test/miniconda3/envs/abc/lib/python3.12/site-packages/mmengine/runner/runner.py", line 1748, in train
-    self._init_model_weights()
-  File "/mnt/ht2-nas2/EO_test/miniconda3/envs/abc/lib/python3.12/site-packages/mmengine/runner/runner.py", line 923, in _init_model_weights
-    model.init_weights()
-  File "/mnt/ht2-nas2/EO_test/miniconda3/envs/abc/lib/python3.12/site-packages/mmengine/model/base_module.py", line 136, in init_weights
-    m.init_weights()
-  File "/mnt/ht2-nas2/EO_test/wj1/mm_series/mmseg_olmoearth_new/mmseg/models/backbones/swin.py", line 737, in init_weights
-    self.load_state_dict(state_dict, strict=False)
-  File "/mnt/ht2-nas2/EO_test/miniconda3/envs/abc/lib/python3.12/site-packages/torch/nn/modules/module.py", line 2624, in load_state_dict
-    raise RuntimeError(
-RuntimeError: Error(s) in loading state_dict for SwinTransformer:
-	size mismatch for stages.0.blocks.0.attn.w_msa.relative_position_bias_table: copying a param with shape torch.Size([225, 8]) from checkpoint, the shape in current model is torch.Size([169, 11]).
-	size mismatch for stages.0.blocks.0.attn.w_msa.relative_position_index: copying a param with shape torch.Size([64, 64]) from checkpoint, the shape in current model is torch.Size([49, 49]).
-	size mismatch for stages.0.blocks.1.attn.w_msa.relative_position_bias_table: copying a param with shape torch.Size([225, 8]) from checkpoint, the shape in current model is torch.Size([169, 11]).
-	size mismatch for stages.0.blocks.1.attn.w_msa.relative_position_index: copying a param with shape torch.Size([64, 64]) from checkpoint, the shape in current model is torch.Size([49, 49]).
-	size mismatch for stages.1.blocks.0.attn.w_msa.relative_position_bias_table: copying a param with shape torch.Size([225, 16]) from checkpoint, the shape in current model is torch.Size([169, 22]).
-	size mismatch for stages.1.blocks.0.attn.w_msa.relative_position_index: copying a param with shape torch.Size([64, 64]) from checkpoint, the shape in current model is torch.Size([49, 49]).
-	size mismatch for stages.1.blocks.1.attn.w_msa.relative_position_bias_table: copying a param with shape torch.Size([225, 16]) from checkpoint, the shape in current model is torch.Size([169, 22]).
-	size mismatch for stages.1.blocks.1.attn.w_msa.relative_position_index: copying a param with shape torch.Size([64, 64]) from checkpoint, the shape in current model is torch.Size([49, 49]).
-	size mismatch for stages.2.blocks.0.attn.w_msa.relative_position_bias_table: copying a param with shape torch.Size([225, 32]) from checkpoint, the shape in current model is torch.Size([169, 44]).
-	size mismatch for stages.2.blocks.0.attn.w_msa.relative_position_index: copying a param with shape torch.Size([64, 64]) from checkpoint, the shape in current model is torch.Size([49, 49]).
-	size mismatch for stages.2.blocks.1.attn.w_msa.relative_position_bias_table: copying a param with shape torch.Size([225, 32]) from checkpoint, the shape in current model is torch.Size([169, 44]).
-	size mismatch for stages.2.blocks.1.attn.w_msa.relative_position_index: copying a param with shape torch.Size([64, 64]) from checkpoint, the shape in current model is torch.Size([49, 49]).
-	size mismatch for stages.2.blocks.2.attn.w_msa.relative_position_bias_table: copying a param with shape torch.Size([225, 32]) from checkpoint, the shape in current model is torch.Size([169, 44]).
-	size mismatch for stages.2.blocks.2.attn.w_msa.relative_position_index: copying a param with shape torch.Size([64, 64]) from checkpoint, the shape in current model is torch.Size([49, 49]).
-	size mismatch for stages.2.blocks.3.attn.w_msa.relative_position_bias_table: copying a param with shape torch.Size([225, 32]) from checkpoint, the shape in current model is torch.Size([169, 44]).
-	size mismatch for stages.2.blocks.3.attn.w_msa.relative_position_index: copying a param with shape torch.Size([64, 64]) from checkpoint, the shape in current model is torch.Size([49, 49]).
-	size mismatch for stages.2.blocks.4.attn.w_msa.relative_position_bias_table: copying a param with shape torch.Size([225, 32]) from checkpoint, the shape in current model is torch.Size([169, 44]).
-	size mismatch for stages.2.blocks.4.attn.w_msa.relative_position_index: copying a param with shape torch.Size([64, 64]) from checkpoint, the shape in current model is torch.Size([49, 49]).
-	size mismatch for stages.2.blocks.5.attn.w_msa.relative_position_bias_table: copying a param with shape torch.Size([225, 32]) from checkpoint, the shape in current model is torch.Size([169, 44]).
-	size mismatch for stages.2.blocks.5.attn.w_msa.relative_position_index: copying a param with shape torch.Size([64, 64]) from checkpoint, the shape in current model is torch.Size([49, 49]).
-	size mismatch for stages.2.blocks.6.attn.w_msa.relative_position_bias_table: copying a param with shape torch.Size([225, 32]) from checkpoint, the shape in current model is torch.Size([169, 44]).
-	size mismatch for stages.2.blocks.6.attn.w_msa.relative_position_index: copying a param with shape torch.Size([64, 64]) from checkpoint, the shape in current model is torch.Size([49, 49]).
-	size mismatch for stages.2.blocks.7.attn.w_msa.relative_position_bias_table: copying a param with shape torch.Size([225, 32]) from checkpoint, the shape in current model is torch.Size([169, 44]).
-	size mismatch for stages.2.blocks.7.attn.w_msa.relative_position_index: copying a param with shape torch.Size([64, 64]) from checkpoint, the shape in current model is torch.Size([49, 49]).
-	size mismatch for stages.2.blocks.8.attn.w_msa.relative_position_bias_table: copying a param with shape torch.Size([225, 32]) from checkpoint, the shape in current model is torch.Size([169, 44]).
-	size mismatch for stages.2.blocks.8.attn.w_msa.relative_position_index: copying a param with shape torch.Size([64, 64]) from checkpoint, the shape in current model is torch.Size([49, 49]).
-	size mismatch for stages.2.blocks.9.attn.w_msa.relative_position_bias_table: copying a param with shape torch.Size([225, 32]) from checkpoint, the shape in current model is torch.Size([169, 44]).
-	size mismatch for stages.2.blocks.9.attn.w_msa.relative_position_index: copying a param with shape torch.Size([64, 64]) from checkpoint, the shape in current model is torch.Size([49, 49]).
-	size mismatch for stages.2.blocks.10.attn.w_msa.relative_position_bias_table: copying a param with shape torch.Size([225, 32]) from checkpoint, the shape in current model is torch.Size([169, 44]).
-	size mismatch for stages.2.blocks.10.attn.w_msa.relative_position_index: copying a param with shape torch.Size([64, 64]) from checkpoint, the shape in current model is torch.Size([49, 49]).
-	size mismatch for stages.2.blocks.11.attn.w_msa.relative_position_bias_table: copying a param with shape torch.Size([225, 32]) from checkpoint, the shape in current model is torch.Size([169, 44]).
-	size mismatch for stages.2.blocks.11.attn.w_msa.relative_position_index: copying a param with shape torch.Size([64, 64]) from checkpoint, the shape in current model is torch.Size([49, 49]).
-	size mismatch for stages.2.blocks.12.attn.w_msa.relative_position_bias_table: copying a param with shape torch.Size([225, 32]) from checkpoint, the shape in current model is torch.Size([169, 44]).
-	size mismatch for stages.2.blocks.12.attn.w_msa.relative_position_index: copying a param with shape torch.Size([64, 64]) from checkpoint, the shape in current model is torch.Size([49, 49]).
-	size mismatch for stages.2.blocks.13.attn.w_msa.relative_position_bias_table: copying a param with shape torch.Size([225, 32]) from checkpoint, the shape in current model is torch.Size([169, 44]).
-	size mismatch for stages.2.blocks.13.attn.w_msa.relative_position_index: copying a param with shape torch.Size([64, 64]) from checkpoint, the shape in current model is torch.Size([49, 49]).
-	size mismatch for stages.2.blocks.14.attn.w_msa.relative_position_bias_table: copying a param with shape torch.Size([225, 32]) from checkpoint, the shape in current model is torch.Size([169, 44]).
-	size mismatch for stages.2.blocks.14.attn.w_msa.relative_position_index: copying a param with shape torch.Size([64, 64]) from checkpoint, the shape in current model is torch.Size([49, 49]).
-	size mismatch for stages.2.blocks.15.attn.w_msa.relative_position_bias_table: copying a param with shape torch.Size([225, 32]) from checkpoint, the shape in current model is torch.Size([169, 44]).
-	size mismatch for stages.2.blocks.15.attn.w_msa.relative_position_index: copying a param with shape torch.Size([64, 64]) from checkpoint, the shape in current model is torch.Size([49, 49]).
-	size mismatch for stages.2.blocks.16.attn.w_msa.relative_position_bias_table: copying a param with shape torch.Size([225, 32]) from checkpoint, the shape in current model is torch.Size([169, 44]).
-	size mismatch for stages.2.blocks.16.attn.w_msa.relative_position_index: copying a param with shape torch.Size([64, 64]) from checkpoint, the shape in current model is torch.Size([49, 49]).
-	size mismatch for stages.2.blocks.17.attn.w_msa.relative_position_bias_table: copying a param with shape torch.Size([225, 32]) from checkpoint, the shape in current model is torch.Size([169, 44]).
-	size mismatch for stages.2.blocks.17.attn.w_msa.relative_position_index: copying a param with shape torch.Size([64, 64]) from checkpoint, the shape in current model is torch.Size([49, 49]).
-	size mismatch for stages.3.blocks.0.attn.w_msa.relative_position_bias_table: copying a param with shape torch.Size([225, 64]) from checkpoint, the shape in current model is torch.Size([169, 88]).
-	size mismatch for stages.3.blocks.0.attn.w_msa.relative_position_index: copying a param with shape torch.Size([64, 64]) from checkpoint, the shape in current model is torch.Size([49, 49]).
-	size mismatch for stages.3.blocks.1.attn.w_msa.relative_position_bias_table: copying a param with shape torch.Size([225, 64]) from checkpoint, the shape in current model is torch.Size([169, 88]).
-	size mismatch for stages.3.blocks.1.attn.w_msa.relative_position_index: copying a param with shape torch.Size([64, 64]) from checkpoint, the shape in current model is torch.Size([49, 49]).
+  File "/mnt/ht2-nas2/EO_test/wj1/swin_openmmlab/./opencd_tools/test.py", line 110, in main
+    runner.test()
+  File "/mnt/ht2-nas2/EO_test/miniconda3/envs/abc/lib/python3.12/site-packages/mmengine/runner/runner.py", line 1823, in test
+    metrics = self.test_loop.run()  # type: ignore
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/ht2-nas2/EO_test/miniconda3/envs/abc/lib/python3.12/site-packages/mmengine/runner/loops.py", line 463, in run
+    self.run_iter(idx, data_batch)
+  File "/mnt/ht2-nas2/EO_test/miniconda3/envs/abc/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/ht2-nas2/EO_test/miniconda3/envs/abc/lib/python3.12/site-packages/mmengine/runner/loops.py", line 492, in run_iter
+    self.runner.call_hook(
+  File "/mnt/ht2-nas2/EO_test/miniconda3/envs/abc/lib/python3.12/site-packages/mmengine/runner/runner.py", line 1841, in call_hook
+    raise TypeError(f'{e} in {hook}') from None
+TypeError: LocalVisBackend.add_image() takes from 3 to 4 positional arguments but 6 were given in <opencd.engine.hooks.visualization_hook.CDVisualizationHook object at 0x7fafcd8052b0>
+
+
+mmengine=0.10.7
